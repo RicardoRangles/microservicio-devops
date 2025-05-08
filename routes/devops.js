@@ -3,22 +3,19 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const validateAPIKey = require('../middleware/auth');
 
-// Cambiar la ruta a '/DevOps' en vez de '/'
-router.post('/DevOps', validateAPIKey, (req, res) => {
+router.post('/', validateAPIKey, (req, res) => {
   const { message, to, from, timeToLifeSec } = req.body;
 
   if (!message || !to || !from || !timeToLifeSec) {
     return res.status(400).json({ error: 'Faltan campos en el cuerpo del mensaje' });
   }
 
-  // Generar JWT único por transacción
   const token = jwt.sign(
     { to, from, timestamp: Date.now() },
-    process.env.JWT_SECRET,
+    process.env.JWT_SECRET || 'secret', // por si no está seteado en test
     { expiresIn: `${timeToLifeSec}s` }
   );
 
-  // Incluir el token en el header
   res.setHeader('X-JWT-KWY', token);
 
   return res.json({
@@ -26,8 +23,7 @@ router.post('/DevOps', validateAPIKey, (req, res) => {
   });
 });
 
-// Cualquier otro método devuelve ERROR
-router.all('/DevOps', (req, res) => {
+router.all('/', (req, res) => {
   res.status(405).json({ error: 'ERROR' });
 });
 
