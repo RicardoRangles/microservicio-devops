@@ -1,20 +1,20 @@
-# Imagen base oficial de Node.js
-FROM node:18
+# Usa la imagen base de Node.js
+FROM node:18-alpine
 
-# Crear y usar el directorio de la app
+# Configura el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiar los archivos del proyecto
+# Copia los archivos package.json y package-lock.json
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm install
+# Instala las dependencias
+RUN npm install --only=production
 
-# Copiar el resto del código
+# Copia el resto de la aplicación
 COPY . .
 
-# Exponer el puerto que usa Express
+# Expone el puerto que el contenedor usará
 EXPOSE 3000
 
-# Comando para ejecutar la app
-CMD [ "node", "index.js" ]
+# Comando para iniciar la aplicación (aquí se ejecuta el servidor)
+CMD ["node", "server.js"]
