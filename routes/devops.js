@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const validateAPIKey = require('../middleware/auth');
 
-router.post('/', validateAPIKey, (req, res) => {
+// Cambiar la ruta a '/DevOps' en vez de '/'
+router.post('/DevOps', validateAPIKey, (req, res) => {
   const { message, to, from, timeToLifeSec } = req.body;
 
   if (!message || !to || !from || !timeToLifeSec) {
@@ -26,7 +27,7 @@ router.post('/', validateAPIKey, (req, res) => {
 });
 
 // Cualquier otro método devuelve ERROR
-router.all('/', (req, res) => {
+router.all('/DevOps', (req, res) => {
   res.status(405).json({ error: 'ERROR' });
 });
 
