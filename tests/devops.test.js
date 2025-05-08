@@ -1,5 +1,5 @@
-const request = require('supertest'); // Para hacer peticiones HTTP a mi API
-const app = require('../index'); // Archivo principal es index.js
+const request = require('supertest');
+const app = require('../index');
 
 describe('POST /DevOps', () => {
   it('should return a success message when valid data is sent', async () => {
