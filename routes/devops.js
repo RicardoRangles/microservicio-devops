@@ -19,7 +19,8 @@ router.post('/', validateAPIKey, (req, res) => {
   res.setHeader('X-JWT-KWY', token);
 
   return res.json({
-    message: `Hello ${to} your message will be sent`
+    message: `Hello ${to} your message will be sent`,
+    pod: process.env.HOSTNAME || 'unknown'
   });
 });
 
