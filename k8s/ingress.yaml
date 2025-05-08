@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservicio-devops-ingress
+  namespace: local
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: microservicio.nttdata.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: microservicio-devops-svc
+                port:
+                  number: 80
+            path: /DevOps
+            pathType: Prefix

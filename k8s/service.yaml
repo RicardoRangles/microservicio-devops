@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservicio-devops-svc
+  namespace: local
+spec:
+  ports:
+    - nodePort: 31607
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: microservicio-devops
+  sessionAffinity: None
+  type: NodePort
