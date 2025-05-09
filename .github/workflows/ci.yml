@@ -45,14 +45,11 @@ jobs:
       - name: Subir imagen a DockerHub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/microservicio-devops:${{ github.sha }}
 
-      # 9. Configurar kubeconfig
-      - name: Decodificar y configurar kubeconfig
-        run: |
-          echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > $HOME/.kube/config
-
-      # 10. Desplegar en Kubernetes
+      # 9. Desplegar en Kubernetes
       - name: Desplegar en Kubernetes
+        env:
+          KUBECONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          kubectl apply -f k8s/deployment.yaml && \
+          kubectl apply -f k8s/service.yaml && \
           kubectl apply -f k8s/ingress.yaml
