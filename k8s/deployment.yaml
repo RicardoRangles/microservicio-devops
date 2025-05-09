@@ -25,7 +25,7 @@ spec:
               value: "o\t2f5ae96c-b558-4c7b-a590-a501ae1c3f6c"
             - name: PORT
               value: '3000'
-          image: ricardorangles/microservicio-devops:latest
+          image: ${{ secrets.DOCKER_USERNAME }}/microservicio-devops:${{ github.sha }}
           imagePullPolicy: IfNotPresent
           name: microservicio-devops
           ports:
