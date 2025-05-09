@@ -52,7 +52,6 @@ jobs:
 
       # 10. Desplegar en Kubernetes
       - name: Desplegar en Kubernetes
-        env:
         run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
