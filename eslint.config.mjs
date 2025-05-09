@@ -14,9 +14,10 @@ export default defineConfig([
       sourceType: "commonjs",
       globals: {
         ...globals.browser,
-        process: "readonly", 
+        process: "readonly",
+        // Agrega Jest como un entorno global para reconocer sus funciones
+        ...globals.jest,
       },
     },
   },
 ]);
-
