@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1746764479435" clover="3.2.0">
-  <project timestamp="1746764479435" name="All files">
-    <metrics statements="25" coveredstatements="23" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="2" elements="40" coveredelements="36" complexity="0" loc="25" ncloc="25" packages="3" files="3" classes="3"/>
+<coverage generated="1746774029909" clover="3.2.0">
+  <project timestamp="1746774029910" name="All files">
+    <metrics statements="25" coveredstatements="24" conditionals="12" coveredconditionals="11" methods="3" coveredmethods="3" elements="40" coveredelements="38" complexity="0" loc="25" ncloc="25" packages="3" files="3" classes="3"/>
     <package name="microservicio-devops">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/home/riki/microservicio-devops/index.js">
@@ -26,9 +26,9 @@
       </file>
     </package>
     <package name="microservicio-devops.routes">
-      <metrics statements="14" coveredstatements="12" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="1"/>
+      <metrics statements="14" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
       <file name="devops.js" path="/home/riki/microservicio-devops/routes/devops.js">
-        <metrics statements="14" coveredstatements="12" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="1"/>
+        <metrics statements="14" coveredstatements="13" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -41,7 +41,7 @@
         <line num="19" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
       </file>
     </package>
