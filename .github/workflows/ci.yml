@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
@@ -7,51 +7,23 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Clonar el repositorio
-      - name: Clonar el repositorio
-        uses: actions/checkout@v3
+    - name: Checkout código
+      uses: actions/checkout@v3
 
-      # 2. Configurar Node.js
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      # 3. Instalar dependencias
-      - name: Instalar dependencias
-        run: npm install
+    - name: Instalar dependencias
+      run: npm install
 
-      # 4. Ejecutar pruebas automatizadas
-      - name: Ejecutar pruebas
-        run: npm test
+    - name: Ejecutar pruebas
+      run: npm test
 
-      # 5. Análisis estático con ESLint
-      - name: Análisis estático de código
-        run: npx eslint . || true
-
-      # 6. Construir imagen Docker
-      - name: Construir imagen Docker
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/microservicio-devops:${{ github.sha }} .
-
-      # 7. Loguear en DockerHub
-      - name: Loguear en DockerHub
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-      # 8. Push de la imagen a DockerHub
-      - name: Subir imagen a DockerHub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/microservicio-devops:${{ github.sha }}
-
-      # 9. Crear kubeconfig temporal
-      - name: Crear kubeconfig temporal
-        run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig
-
-      # 10. Desplegar en Kubernetes
-      - name: Desplegar en Kubernetes
-        run: |
-          KUBECONFIG=kubeconfig kubectl apply -f k8s/deployment.yaml
-          KUBECONFIG=kubeconfig kubectl apply -f k8s/service.yaml
-          KUBECONFIG=kubeconfig kubectl apply -f k8s/ingress.yaml
+    - name: Análisis estático de código
+      run: npx eslint . || true
