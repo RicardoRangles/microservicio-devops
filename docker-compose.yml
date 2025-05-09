@@ -1,25 +1,27 @@
-version: "3.8"
+version: '3.8'
 
 services:
   app1:
     build: .
-    container_name: micro1
+    container_name: microservice1
     environment:
-      - PORT=3000
+      - NODE_ENV=production
+      - HOSTNAME=app1
     expose:
       - "3000"
 
   app2:
     build: .
-    container_name: micro2
+    container_name: microservice2
     environment:
-      - PORT=3000
+      - NODE_ENV=production
+      - HOSTNAME=app2
     expose:
       - "3000"
 
   nginx:
-    image: nginx:alpine
-    container_name: load_balancer
+    image: nginx:latest
+    container_name: loadbalancer
     ports:
       - "8080:80"
     volumes:
@@ -27,4 +29,3 @@ services:
     depends_on:
       - app1
       - app2
-

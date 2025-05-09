@@ -13,6 +13,9 @@ RUN npm install --only=production
 # Copia el resto de la aplicación
 COPY . .
 
+# Configura la variable de entorno para el hostname
+ENV HOSTNAME=loadbalancer
+
 # Expone el puerto que el contenedor usará
 EXPOSE 3000
 
