@@ -39,7 +39,7 @@ El proyecto ha sido completamente contenerizado usando tecnología Docker y desp
 
 ### 1. Clonar el repositorio
 
-git clone https://github.com/ricardorangles/microservicio-devops.git
+git clone https://github.com/RicardoRangles/microservicio-devops.git
 cd microservicio-devops
 
 ### 2. Construir y levantar el entorno
@@ -96,4 +96,4 @@ Nginx distribuye el tráfico entre instancias activas.
 
 Todo el proyecto ha sido documentado, versionado y automatizado conforme a los requisitos del reto técnico. Puedes encontrar el código fuente completo en:
 
-https://github.com/ricardorangles/microservicio-devops
+https://github.com/RicardoRangles/microservicio-devops.git
